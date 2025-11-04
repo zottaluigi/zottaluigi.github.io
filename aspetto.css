@@ -97,28 +97,38 @@ header {
 
 /* Stile titolo */
 .logo-titolo {
-  display: block;
-  width: 100%;
-  font-family: 'Dancing Script', 'Brush Script MT', cursive, serif; /* Dancing Script è il più simile, Brush Script MT fallback */
-  font-size: 3.2rem;
+  display: inline-block;
+  font-family: 'Dancing Script', 'Brush Script MT', cursive, serif;
+  font-size: 2rem;
   font-weight: 400;
   color: #1a1817;
-  text-align: center;
+  text-align: left;
   letter-spacing: 0.02em;
   background: transparent;
   border: none;
   text-decoration: none;
   user-select: none;
   cursor: pointer;
-  padding: 24px 0 16px 0;
+  padding: 10px 18px 10px 12px;
+  margin-left: 0;
+  margin-right: 24px;
+  line-height: 1.1;
   transition: filter 0.13s;
 }
 .logo-titolo:active, .logo-titolo:focus, .logo-titolo:hover {
   text-decoration: none;
   color: #1a1817;
-  filter: brightness(0.95);
+  filter: brightness(0.96);
   outline: none;
 }
+
+/* Per la navbar con elementi a destra */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 
 
 /* Mobile Navbar */
