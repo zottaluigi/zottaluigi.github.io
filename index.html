@@ -8,6 +8,7 @@
 </head>
 <body>
   <header>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <nav class="navbar">
       <a href="#" id="pageTop" class="logo-titolo">Il Capriccio del My Way</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Apri Menu">&#9776;</button>
@@ -264,6 +265,14 @@
 </footer>
 
   <script>
+
+    //Funzione: torna in cima
+document.querySelector('.logo-titolo').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+    
     // Mobile nav toggle
     document.getElementById('menuToggle').onclick = function() {
       document.getElementById('navLinks').classList.toggle('active');
