@@ -95,6 +95,32 @@ header {
   background: var(--primary);
 }
 
+/* Stile titolo */
+.logo-titolo {
+  display: block;
+  width: 100%;
+  font-family: 'Dancing Script', 'Brush Script MT', cursive, serif; /* Dancing Script è il più simile, Brush Script MT fallback */
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #1a1817;
+  text-align: center;
+  letter-spacing: 0.02em;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+  padding: 24px 0 16px 0;
+  transition: filter 0.13s;
+}
+.logo-titolo:active, .logo-titolo:focus, .logo-titolo:hover {
+  text-decoration: none;
+  color: #1a1817;
+  filter: brightness(0.95);
+  outline: none;
+}
+
+
 /* Mobile Navbar */
 .menu-toggle {
   background: none;
