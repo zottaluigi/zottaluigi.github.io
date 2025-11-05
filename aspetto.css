@@ -34,8 +34,8 @@ navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 300px;   /* AGGIUNGI o modifica questo valore per spostare titolo dal bordo sinistro */
-  padding-right: 300px;  /* AGGIUNGI questo per spostare il menu dal bordo destro */
+  padding-left: 80px;   /* AGGIUNGI o modifica questo valore per spostare titolo dal bordo sinistro */
+  padding-right: 80px;  /* AGGIUNGI questo per spostare il menu dal bordo destro */
 }
 .logo-titolo {
   font-family: 'Dancing Script', 'Brush Script MT', cursive, serif;
