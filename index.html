@@ -6,7 +6,8 @@
   <title>Il Capriccio del My Way - Menù</title>
   <link rel="stylesheet" href="aspetto.css" />
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="prenotazione.css" />
+  <link rel="stylesheet" href="prenotazione.css">
+
 
 </head>
 <body>
@@ -242,14 +243,83 @@
     </section>
 
 <!-- === PRENOTAZIONE === -->
-<!-- === PRENOTAZIONE === -->
-<section id="prenotazione" class="menu-section">
-  <h2>Prenota il tuo tavolo</h2>
-  <div style="display: flex; justify-content: center;">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdW4qjd0N8RxRvtYcpnGcsx4KJ3lWD5zdfb_5kp7MvIER5iVA/viewform?embedded=true"
-      width="640" height="1560" frameborder="0" marginheight="0" marginwidth="0">Caricamento…</iframe>
-  </div>
-</section>
+<!-- Form Prenotazioni Pizzeria -->
+<div class="booking-form-container">
+    <h2 class="booking-title">🍕 Prenota il tuo tavolo</h2>
+    <p class="booking-subtitle">Compila il modulo per prenotare nella nostra pizzeria</p>
+
+    <div class="booking-success-message" id="successMessage">
+        <h3>✓ Prenotazione Inviata!</h3>
+        <p>Grazie per la tua prenotazione. Ti contatteremo presto per confermare.</p>
+    </div>
+
+    <div class="booking-error-message" id="errorMessage">
+        Si è verificato un errore. Riprova più tardi.
+    </div>
+
+    <form action="https://api.web3forms.com/submit" method="POST" id="bookingForm" class="booking-form">
+        
+        <!-- INSERISCI QUI LA TUA ACCESS KEY -->
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        
+        <!-- Configurazioni opzionali -->
+        <input type="hidden" name="subject" value="Nuova Prenotazione Pizzeria">
+        <input type="hidden" name="from_name" value="Form Prenotazioni">
+        
+        <div class="booking-form-group">
+            <label for="nome">Nome Completo <span class="booking-required">*</span></label>
+            <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+        </div>
+
+        <div class="booking-form-group">
+            <label for="email">Email <span class="booking-required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="mario.rossi@example.com" required>
+        </div>
+
+        <div class="booking-form-group">
+            <label for="telefono">Telefono <span class="booking-required">*</span></label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+39 123 456 7890" required>
+        </div>
+
+        <div class="booking-form-row">
+            <div class="booking-form-group">
+                <label for="data">Data <span class="booking-required">*</span></label>
+                <input type="date" id="data" name="data" required>
+            </div>
+
+            <div class="booking-form-group">
+                <label for="ora">Ora <span class="booking-required">*</span></label>
+                <input type="time" id="ora" name="ora" required>
+            </div>
+        </div>
+
+        <div class="booking-form-group">
+            <label for="persone">Numero di Persone <span class="booking-required">*</span></label>
+            <select id="persone" name="persone" required>
+                <option value="">Seleziona...</option>
+                <option value="1">1 persona</option>
+                <option value="2">2 persone</option>
+                <option value="3">3 persone</option>
+                <option value="4">4 persone</option>
+                <option value="5">5 persone</option>
+                <option value="6">6 persone</option>
+                <option value="7">7 persone</option>
+                <option value="8">8 persone</option>
+                <option value="9+">9 o più persone</option>
+            </select>
+        </div>
+
+        <div class="booking-form-group">
+            <label for="note">Note aggiuntive (opzionale)</label>
+            <textarea id="note" name="note" placeholder="Allergie, richieste speciali, preferenze sul tavolo..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="booking-submit-btn">Invia Prenotazione</button>
+    </form>
+</div>
+
+<script src="booking-form.js"></script>
+
 
 
     
@@ -294,6 +364,71 @@
 
   <script>
 
+// Form Prenotazioni Pizzeria - JavaScript
+
+// Imposta la data minima come oggi
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date().toISOString().split('T')[0];
+    const dataInput = document.getElementById('data');
+    if (dataInput) {
+        dataInput.setAttribute('min', today);
+    }
+
+    // Gestisci l'invio del form
+    const form = document.getElementById('bookingForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Disabilita il pulsante durante l'invio
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Invio in corso...';
+            
+            // Nascondi messaggi precedenti
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            try {
+                const formData = new FormData(form);
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Mostra messaggio di successo
+                    successMessage.style.display = 'block';
+                    form.style.display = 'none';
+                    
+                    // Scroll verso il messaggio di successo
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Resetta il form
+                    form.reset();
+                } else {
+                    throw new Error('Invio fallito');
+                }
+            } catch (error) {
+                // Mostra messaggio di errore
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Invia Prenotazione';
+                
+                // Scroll verso il messaggio di errore
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    }
+});
+
+
+    
     //Funzione: torna in cima
 document.querySelector('.logo-titolo').addEventListener('click', function(e) {
   e.preventDefault();
