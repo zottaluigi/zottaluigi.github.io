@@ -362,6 +362,9 @@ footer {
 
 
 /* Sezione Contatto di telefono Centrale */
+.menu-section h2 {
+    text-align: center;
+}
 .contatto-centrale {
     display: flex;
     justify-content: center;
