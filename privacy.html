@@ -3,120 +3,353 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy - Nome Ristorante</title>
+  <title>Privacy Policy - Il Capriccio del My Way</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-     .back-btn {
-  display: inline-block;
-  background-color: #c7a17a;
-  color: #2c1810;
-  border: none;
-  border-radius: 30px;
-  padding: 0.65rem 1.8rem;
-  font-size: 1rem;
-  font-family: 'Georgia', serif;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 10px rgba(44,24,16,0.09);
-  transition: all 0.25s ease;
-}
-.back-btn:hover {
-  background-color: #e8d5c4;
-  color: #c7a17a;
-  box-shadow: 0 8px 18px rgba(44,24,16,0.18);
-  transform: translateY(-2px);
-}
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px 20px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-/* Extra - Layout privacy box */
-body {
-  background-color: #f9f6f3;
-  color: #333;
-}
+    .privacy-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-/* Card effetto per privacy policy */
-.privacy-container {
-  max-width: 640px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 18px;
-  padding: 2.2rem 2rem 1.2rem 2rem;
-  box-shadow: 0 8px 32px rgba(44,24,16,0.06);
-  border: 1px solid #e8d5c4;
-}
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #667eea;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .back-btn:hover {
+      background-color: #fff;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+      transform: translateY(-3px);
+    }
 
-h1 {
-  font-family: 'Georgia', serif;
-  color: #c7a17a;
-  font-size: 2.2rem;
-  margin-bottom: 1.2rem;
-  text-align: center;
-}
+    .privacy-container {
+      background: #fff;
+      border-radius: 25px;
+      padding: 60px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
 
-h2 {
-  font-family: 'Georgia', serif;
-  color: #2c1810;
-  font-size: 1.3rem;
-  margin-top: 2.1rem;
-  margin-bottom: 0.7rem;
-  border-left: 4px solid #c7a17a;
-  padding-left: 0.6rem;
-}
+    .privacy-header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      border-bottom: 3px solid #667eea;
+    }
 
-/* Paragrafi */
-p {
-  margin-bottom: 1.1rem;
-  font-size: 1.05rem;
-}
+    .privacy-header h1 {
+      color: #333;
+      font-size: 42px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-/* Link */
-a {
-  color: #c7a17a;
-  text-decoration: none;
-  font-weight: bold;
-}
-a:hover {
-  color: #e8d5c4;
-  text-decoration: underline;
-}
+    .privacy-header .subtitle {
+      color: #666;
+      font-size: 18px;
+      font-style: italic;
+    }
 
-@media (max-width: 650px) {
-  .privacy-container {
-    padding: 1.3rem 0.7rem 0.8rem 0.7rem;
-  }
-  h1 { font-size: 1.35rem; }
-  h2 { font-size: 1rem; }
-}
+    .last-update {
+      background: linear-gradient(135deg, #667eea15, #764ba215);
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 40px;
+      border-left: 4px solid #667eea;
+    }
 
+    .last-update strong {
+      color: #667eea;
+    }
+
+    h2 {
+      color: #667eea;
+      font-size: 26px;
+      margin-top: 45px;
+      margin-bottom: 20px;
+      padding-left: 20px;
+      border-left: 5px solid #667eea;
+      font-weight: 700;
+      position: relative;
+    }
+
+    h2::before {
+      content: "§";
+      position: absolute;
+      left: -15px;
+      color: #764ba2;
+      font-size: 30px;
+    }
+
+    h3 {
+      color: #764ba2;
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 18px;
+      font-size: 16px;
+      color: #555;
+      text-align: justify;
+    }
+
+    ul {
+      margin: 20px 0;
+      padding-left: 25px;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+      color: #555;
+      font-size: 16px;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    ul li::marker {
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, #f8f9ff, #fff5f8);
+      border-left: 5px solid #667eea;
+      padding: 25px;
+      border-radius: 12px;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      color: #667eea;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      margin: 40px 0;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .contact-box h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .contact-box p {
+      color: white;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .contact-box a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-bottom: 2px solid white;
+      transition: all 0.3s ease;
+    }
+
+    .contact-box a:hover {
+      border-bottom-color: transparent;
+      opacity: 0.8;
+    }
+
+    a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .right-item {
+      background: #f8f9ff;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+      transition: all 0.3s ease;
+    }
+
+    .right-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+    }
+
+    .right-item strong {
+      color: #667eea;
+      font-size: 18px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-privacy {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 2px solid #e0e0e0;
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .icon {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .privacy-container {
+        padding: 40px 25px;
+      }
+      
+      .privacy-header h1 { 
+        font-size: 32px; 
+      }
+      
+      h2 { 
+        font-size: 22px; 
+      }
+
+      .rights-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p>Questa Privacy Policy descrive come il ristorante "Nome Ristorante" (di seguito "noi") raccoglie e utilizza i dati degli utenti che visitano il nostro sito web.</p>
-  
-  <h2>Tipologia di dati raccolti</h2>
-  <p>Il nostro sito è un sito vetrina e non richiede né raccoglie dati personali dagli utenti.</p>
-  <p>Utilizziamo cookie tecnici strettamente necessari per il corretto funzionamento del sito e per migliorare l’esperienza di navigazione.</p>
-  
-  <h2>Cookie</h2>
-  <p>I cookie tecnici ci permettono di mantenere attive alcune funzionalità essenziali. Non utilizziamo cookie di profilazione o di terze parti a fini pubblicitari.</p>
-  <p>Puoi gestire o bloccare i cookie direttamente dal tuo browser, ma potrebbe influenzare la fruibilità del sito.</p>
-  
-  <h2>Titolare del trattamento</h2>
-  <p>Il titolare del trattamento dei dati è "Nome Ristorante", con sede in [indirizzo completo].</p>
-  <p>Per qualsiasi richiesta relativa alla privacy scrivere a: <a href="mailto:privacy@nomeristorante.it">privacy@nomeristorante.it</a>.</p>
+  <div class="privacy-wrapper">
+    <a href="index.html" class="back-btn">
+      <span>←</span> Torna alla Home
+    </a>
 
-  <h2>Diritti dell'utente</h2>
-  <p>Gli utenti hanno il diritto di sapere quali dati vengono trattati, di richiederne la cancellazione o limitazione secondo la normativa vigente.</p>
-  
-  <h2>Aggiornamenti della policy</h2>
-  <p>Ci riserviamo il diritto di aggiornare questa Privacy Policy in qualsiasi momento. Si consiglia di consultarla periodicamente.</p>
+    <div class="privacy-container">
+      <div class="privacy-header">
+        <h1>🔒 Privacy Policy</h1>
+        <p class="subtitle">Il Capriccio del My Way - Trasparenza e protezione dei tuoi dati</p>
+      </div>
 
-<button class="back-btn" onclick="window.location.href='index.html'">
-  ← Torna alla Home
-</button>
+      <div class="last-update">
+        <strong>Ultimo aggiornamento:</strong> 7 Novembre 2025
+      </div>
 
-  
-</body>
-</html>
+      <p>La presente Privacy Policy descrive in modo chiaro e trasparente come la pizzeria <strong>"Il Capriccio del My Way"</strong> (di seguito "noi", "nostro" o "la Pizzeria") raccoglie, utilizza, conserva e protegge i dati personali degli utenti che visitano il nostro sito web e utilizzano i servizi online, in conformità al Regolamento UE 2016/679 (GDPR).</p>
+
+      <h2>1. Titolare del Trattamento</h2>
+      <div class="info-box">
+        <h3><span class="icon">🏪</span> Dati del Titolare</h3>
+        <p><strong>Denominazione:</strong> Il Capriccio del My Way</p>
+        <p><strong>Indirizzo:</strong> Corso Grande Umberto I, 170 - 85023 Forenza (PZ)</p>
+        <p><strong>Telefono:</strong> <a href="tel:+390971197025">+39 0971 197 0253</a> / <a href="tel:+393274760894">327 476 0894</a></p>
+      </div>
+      <p>Per qualsiasi richiesta, domanda o esercizio dei diritti relativi alla privacy e al trattamento dei dati personali, è possibile contattare il Titolare ai recapiti sopra indicati.</p>
+
+      <h2>2. Tipologia di Dati Raccolti</h2>
+      <p>Nel rispetto dei principi di minimizzazione e necessità, raccogliamo esclusivamente i dati strettamente necessari per fornire i nostri servizi.</p>
+      
+      <h3><span class="icon">📝</span> Dati raccolti tramite il modulo di prenotazione:</h3>
+      <ul>
+        <li><strong>Nome completo:</strong> per identificare il cliente e personalizzare il servizio</li>
+        <li><strong>Indirizzo email:</strong> per inviare conferme e comunicazioni relative alla prenotazione</li>
+        <li><strong>Numero di telefono:</strong> per contattare il cliente in caso di necessità o modifiche</li>
+        <li><strong>Data e ora della prenotazione:</strong> per organizzare il servizio</li>
+        <li><strong>Numero di persone:</strong> per preparare adeguatamente il tavolo</li>
+        <li><strong>Note aggiuntive (facoltative):</strong> per gestire richieste speciali come allergie o preferenze</li>
+      </ul>
+
+      <h3><span class="icon">🍪</span> Cookie e dati di navigazione:</h3>
+      <ul>
+        <li><strong>Cookie tecnici:</strong> necessari per il funzionamento del sito (es. memorizzazione dell'accettazione dei cookie)</li>
+        <li><strong>Dati di navigazione:</strong> informazioni tecniche raccolte automaticamente dai server (indirizzo IP, tipo di browser, pagine visitate)</li>
+      </ul>
+      <p><strong>Nota importante:</strong> Non utilizziamo cookie di profilazione, cookie pubblicitari o di tracciamento di terze parti.</p>
+
+      <h2>3. Finalità del Trattamento</h2>
+      <p>I dati personali raccolti vengono trattati per le seguenti finalità legittime:</p>
+      <ul>
+        <li><strong>Gestione delle prenotazioni:</strong> elaborare, confermare e organizzare le prenotazioni dei tavoli</li>
+        <li><strong>Comunicazioni di servizio:</strong> inviare conferme, promemoria o comunicazioni relative alla prenotazione</li>
+        <li><strong>Assistenza clienti:</strong> rispondere a richieste di informazioni o assistenza</li>
+        <li><strong>Adempimenti di legge:</strong> rispettare obblighi normativi (es. fiscali, sanitari)</li>
+        <li><strong>Sicurezza del servizio:</strong> prevenire frodi e garantire la sicurezza del sito</li>
+      </ul>
+      <p><strong>I tuoi dati NON verranno MAI:</strong></p>
+      <ul>
+        <li>Utilizzati per finalità di marketing senza il tuo esplicito consenso</li>
+        <li>Ceduti, venduti o condivisi con terze parti per scopi commerciali</li>
+        <li>Trasferiti al di fuori dell'Unione Europea senza adeguate garanzie</li>
+      </ul>
+
+      <h2>4. Base Giuridica del Trattamento</h2>
+      <p>Il trattamento dei tuoi dati personali si basa sui seguenti fondamenti giuridici previsti dal GDPR:</p>
+      <ul>
+        <li><strong>Esecuzione di un contratto (Art. 6.1.b GDPR):</strong> la gestione della prenotazione richiede il trattamento dei tuoi dati</li>
+        <li><strong>Consenso dell'interessato (Art. 6.1.a GDPR):</strong> fornito volontariamente al momento della compilazione del modulo</li>
+        <li><strong>Obbligo legale (Art. 6.1.c GDPR):</strong> adempimento di obblighi normativi fiscali e sanitari</li>
+        <li><strong>Legittimo interesse (Art. 6.1.f GDPR):</strong> sicurezza del sito e prevenzione frodi</li>
+      </ul>
+
+      <h2>5. Modalità di Trattamento e Conservazione</h2>
+      <h3><span class="icon">🔐</span> Modalità di trattamento:</h3>
+      <p>I dati personali vengono trattati mediante strumenti elettronici e cartacei, con logiche strettamente correlate alle finalità indicate e, comunque, in modo da garantire la sicurezza e la riservatezza dei dati stessi.</p>
+      
+      <h3><span class="icon">⏱️</span> Periodo di conservazione:</h3>
+      <ul>
+        <li><strong>Dati di prenotazione:</strong> conservati per 12 mesi dalla data della prenotazione</li>
+        <li><strong>Dati fiscali:</strong> conservati per il periodo previsto dalla normativa fiscale (10 anni)</li>
+        <li><strong>Cookie tecnici:</strong> conservati per la durata della sessione o fino alla loro scadenza</li>
+      </ul>
+      <p>Al termine
