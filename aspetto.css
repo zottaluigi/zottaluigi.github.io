@@ -7,13 +7,6 @@
   --shadow: rgba(60, 40, 20, 0.05) 0 3px 8px;
 }
 
-/* FIX: Elimina scroll orizzontale e striscia bianca */
-html {
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
-}
-
 html, body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
@@ -33,12 +26,8 @@ header {
   background: var(--accent, #c7a17a);
   box-shadow: 0 3px 14px rgba(60, 40, 20, 0.03);
 }
-
 body {
-  padding-top: 80px;
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
+  padding-top: 62px;
 }
 
 /* NAVBAR: aggiunto padding ai lati sinistro e destro per distanziare titolo e menu */
@@ -47,9 +36,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 100px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 100px;  /* MODIFICA: più spazio dal bordo sinistro */
+  padding-right: 100px; /* MODIFICA: più spazio dal bordo destro */
 }
 
 .logo-titolo {
@@ -58,7 +46,7 @@ body {
   color: #1a1817;
   background: transparent;
   border: none;
-  padding: 12px 0;
+  padding: 8px 0 8px 0; /* MODIFICA: padding interno azzerato per posizione precisa */
   margin-left: 0;
   margin-right: 0;
   user-select: none;
@@ -68,7 +56,6 @@ body {
   line-height: 1.1;
   flex-shrink: 0;
 }
-
 .logo-titolo:active, .logo-titolo:focus, .logo-titolo:hover {
   color: #1a1817;
   outline: none;
@@ -81,6 +68,7 @@ body {
   align-items: center;
   justify-content: flex-end;
   flex: 1 1 auto;
+  /* padding-right: 0;  RIMOSSO, ora il padding si gestisce su .navbar */
 }
 
 .nav-links {
@@ -92,175 +80,84 @@ body {
   gap: 0.8rem;
   margin: 0;
   padding: 0;
+  /* padding-right: 0;  RIMOSSO */
 }
-
 .nav-links li {
   text-align: right;
 }
-
 .nav-links li a {
   color: var(--light, #fff);
   background: none;
   text-decoration: none;
-  padding: 12px 12px 12px 4px;
+  padding: 9px 12px 9px 4px;
   border-radius: 5px;
   font-weight: 500;
   transition: background 0.13s;
 }
-
 .nav-links li a:hover {
   background: var(--primary, #2c1810);
 }
-
-/* HAMBURGER MENU ANIMATO */
 .menu-toggle {
   background: none;
   border: none;
+  color: var(--light, #fff);
+  font-size: 2rem;
   cursor: pointer;
   display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  position: relative;
-  z-index: 11;
+  /* margin-right: 50;  NON SERVE più col padding su .navbar */
 }
 
-.hamburger-line {
-  width: 100%;
-  height: 3px;
-  background: var(--light, #fff);
-  border-radius: 2px;
-  transition: all 0.3s ease-in-out;
-  transform-origin: center;
-  display: block;
-}
-
-/* Stato APERTO: trasforma in X */
-.menu-toggle.active .hamburger-line:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-
-.menu-toggle.active .hamburger-line:nth-child(2) {
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.menu-toggle.active .hamburger-line:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-
-/* MOBILE: hamburger e menu verticale */
+/* MOBILE: hamburger e menu verticale sempre a destra */
 @media (max-width: 900px) {
   .navbar {
     flex-direction: row;
     justify-content: space-between;
     width: 100vw;
     max-width: none;
-    padding: 12px 16px;
+    padding-left: 16px; /* MODIFICA: meno spazio su small screen */
+    padding-right: 16px; /* MODIFICA */
   }
   .logo-titolo {
     font-size: 1.13rem;
     margin-right: 0;
-    padding: 8px 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
-
 @media (max-width: 768px) {
-  .navbar-right { 
-    width: auto; 
-  }
-  
-  .menu-toggle {    
-    display: flex; 
-    margin-right: 8px;
-    z-index: 1001;
-  }
-  
-  /* MENU A META' SCHERMO (LATO DESTRO) CON LINEA NERA */
+  .navbar-right { width: auto; }
+  .menu-toggle { display: block; margin-right: 8px; }
   .nav-links {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 70%;
-    max-width: 350px;
-    height: 100vh;
-    background: var(--accent, #c7a17a);
-    
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    
-    /* Nascosto di default - scivola da destra */
-    transform: translateX(100%);
-    transition: transform 0.4s ease-in-out;
-    
-    z-index: 1000;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-shadow: -3px 0 15px rgba(0, 0, 0, 0.2);
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    top: 48px;
+    width: 165px;
+    min-width: 120px;
+    max-width: 210px;
+    background: var(--accent, #c7a17a);
+    border-radius: 0 0 0 16px;
+    box-shadow: 0 10px 24px -10px #200d0540;
+    max-height: 0;
+    overflow: hidden;
+    padding-right: 0.7rem;
+    padding-top: 0;
+    transition: max-height 0.3s;
+    z-index: 10;
   }
-  
-  /* Menu aperto */
   .nav-links.active {
-    transform: translateX(0);
+    max-height: 440px;
+    padding-top: 6px;
+    padding-bottom: 15px;
   }
-  
-  /* Stile link con linea nera separatrice */
   .nav-links li {
-    width: 85%;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Rimuovi linea dall'ultimo elemento */
-  .nav-links li:last-child {
-    border-bottom: none;
-  }
-  
-  .nav-links li a {
-    display: block;
+    text-align: right;
+    padding-right: 0.2em;
+    margin: 6px 0;
     width: 100%;
-    color: var(--light, #fff);
-    background: none;
-    text-decoration: none;
-    padding: 20px 15px;
-    font-size: 1.15rem;
-    font-weight: 600;
-    border-radius: 0;
-    transition: background 0.2s, color 0.2s;
   }
-  
-  .nav-links li a:hover,
-  .nav-links li a:active {
-    background: rgba(44, 24, 16, 0.15);
-    color: var(--primary, #2c1810);
-  }
-}
-
-/* Overlay scuro quando menu aperto */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s, visibility 0.4s;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
 }
 
 /* Fade-in animazione menu voci */
@@ -269,37 +166,30 @@ body {
   transform: translateY(20px);
   transition: opacity 0.6s, transform 0.6s;
 }
-
 .menu-item.fade-in {
   opacity: 1;
   transform: translateY(0);
 }
-
 main {
   padding: 32px 1rem 0 1rem;
   max-width: 1100px;
   margin: 0 auto;
 }
-
 .menu-section {
   margin-bottom: 40px;
 }
-
 .menu-section h2 {
   margin-bottom: 18px;
   font-size: 1.5rem;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-align: center;
 }
-
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
-
 .menu-item {
   background: var(--card);
   border-radius: 10px;
@@ -310,13 +200,10 @@ main {
   padding: 12px 16px;
   gap: 16px;
   transition: transform 0.12s;
-  max-width: 100%;
 }
-
 .menu-item:hover {
   transform: translateY(-3px) scale(1.02);
 }
-
 .menu-item img {
   width: 74px;
   height: 74px;
@@ -324,52 +211,25 @@ main {
   object-fit: cover;
   border: 2px solid var(--accent);
   background: #ece7df;
-  flex-shrink: 0;
 }
-
 .item-info {
   flex: 1;
 }
-
 .item-title {
   font-size: 1.1rem;
   font-weight: bold;
   color: var(--primary);
 }
-
 .item-ingredients {
   font-size: 0.96rem;
   color: #825e3a;
   margin: 4px 0 2px 0;
 }
-
 .item-prices {
   color: var(--accent);
   font-weight: bold;
   font-size: 1.07rem;
 }
-
-/* FIX: Immagini ridotte su mobile */
-@media (max-width: 768px) {
-  .menu-item img {
-    width: 60px;
-    height: 60px;
-    min-width: 60px;
-  }
-  
-  .item-title {
-    font-size: 1rem;
-  }
-  
-  .item-ingredients {
-    font-size: 0.85rem;
-  }
-  
-  .item-prices {
-    font-size: 0.95rem;
-  }
-}
-
 footer {
   width: 100%;
   background: var(--primary, #2c1810);
@@ -379,7 +239,6 @@ footer {
   font-size: 1rem;
   letter-spacing: 0.02em;
 }
-
 .footer-content {
   max-width: 1100px;
   margin: 0 auto;
@@ -389,7 +248,6 @@ footer {
   align-items: flex-start;
   gap: 0;
 }
-
 .footer-section {
   flex: 1 1 0;
   min-width: 220px;
@@ -402,7 +260,6 @@ footer {
   align-items: center;
   text-align: center;
 }
-
 .footer-section h3 {
   font-size: 1.1rem;
   margin-bottom: 13px;
@@ -410,7 +267,6 @@ footer {
   letter-spacing: 0.05em;
   font-weight: bold;
 }
-
 .footer-section p,
 .footer-section a {
   color: var(--light, #fff);
@@ -418,20 +274,17 @@ footer {
   margin: 7px 0;
   font-weight: 400;
 }
-
 .footer-section em {
   color: #ffdba7;
   font-style: normal;
   font-size: 0.97rem;
 }
-
 .social-links {
   margin: 10px 0;
   display: flex;
   gap: 16px;
   justify-content: center;
 }
-
 .social-links a {
   display: inline-block;
   background: var(--accent, #c7a17a);
@@ -446,13 +299,11 @@ footer {
   text-decoration: none;
   transition: background 0.24s, color 0.24s;
 }
-
 .social-links a:hover {
   background: var(--light, #fff);
   color: var(--accent, #c7a17a);
   box-shadow: 0 0 16px #c7a17a44;
 }
-
 @media (max-width: 900px) {
   .footer-content {
     flex-direction: column;
@@ -472,7 +323,6 @@ footer {
     justify-content: center;
   }
 }
-
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -490,13 +340,11 @@ footer {
   justify-content: center;
   gap: 1rem;
 }
-
 .cookie-banner a {
   color: var(--primary);
   text-decoration: underline;
   font-weight: bold;
 }
-
 .cookie-banner button {
   background: var(--primary);
   color: var(--light);
@@ -508,12 +356,15 @@ footer {
   cursor: pointer;
   transition: background 0.2s;
 }
-
 .cookie-banner button:hover {
   background: #543a27;
 }
 
+
 /* Sezione Contatto di telefono Centrale */
+.menu-section h2 {
+    text-align: center;
+}
 .contatto-centrale {
     display: flex;
     justify-content: center;
@@ -573,7 +424,7 @@ footer {
     margin-top: 15px;
 }
 
-/* Responsive contatto */
+/* Responsive */
 @media (max-width: 600px) {
     .contatto-box {
         padding: 40px 30px;
