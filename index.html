@@ -1,47 +1,34 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Il Capriccio del My Way - Menù</title>
-  <link rel="stylesheet" href="aspetto.css" />
-  <link rel="stylesheet" href="prenotazione.css">
-
-
+  <link rel="stylesheet" href="aspetto.css"/>
 </head>
 <body>
-
+  <!-- HEADER E NAVIGATION -->
   <header>
     <nav class="navbar">
-      <!-- Titolo sempre a sinistra -->
-      <a href="#" id="pageTop" class="logo-titolo">Il Capriccio del My Way</a>
-      <!-- Blocco menu destra -->
-      <div class="navbar-right">
-          <button class="menu-toggle" id="menuToggle">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-          </button>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#pizze">Pizze</a></li>
-          <li><a href="#pizze-speciali">Pizze Speciali</a></li>
-          <li><a href="#pucce">Pucce</a></li>
-          <li><a href="#fritti">Fritti</a></li>
-          <li><a href="#aggiunte">Aggiunte</a></li>
-          <li><a href="#bibite">Bibite</a></li>
-          <li><a href="prenotazioni.html">Prenotazioni</a></li>
-        </ul>
-      </div>
+      <a href="#" class="logo-titolo">Il Capriccio del My Way</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#pizze">Pizze</a></li>
+        <li><a href="#pizze-speciali">Pizze Speciali</a></li>
+        <li><a href="#pucce">Pucce</a></li>
+        <li><a href="#fritti">Fritti</a></li>
+        <li><a href="#aggiunte">Aggiunte</a></li>
+        <li><a href="#bibite">Bibite</a></li>
+        <li><a href="prenotazioni.html">Prenotazioni</a></li>
+      </ul>
     </nav>
   </header>
   
   
-  <!-- Banner Cookie -->
-  <div id="cookieBanner" class="cookie-banner" style="display:none;">
-    🔒 Questo sito utilizza cookie tecnici per migliorare la navigazione. 
-    <a href="privacy.html">Privacy Policy</a>
-    <button id="acceptCookies">Accetta</button>
-  </div>
 
   <main>
     <!-- === PIZZE === -->
@@ -311,115 +298,55 @@
         </div>
 </footer>
 
-  <script>
-
-// Form Prenotazioni Pizzeria - JavaScript
-
-// Imposta la data minima come oggi
-document.addEventListener('DOMContentLoaded', function() {
-    const today = new Date().toISOString().split('T')[0];
-    const dataInput = document.getElementById('data');
-    if (dataInput) {
-        dataInput.setAttribute('min', today);
-    }
-
-    // Gestisci l'invio del form
-    const form = document.getElementById('bookingForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');
-
-    if (form) {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Disabilita il pulsante durante l'invio
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Invio in corso...';
-            
-            // Nascondi messaggi precedenti
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
-            try {
-                const formData = new FormData(form);
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    // Mostra messaggio di successo
-                    successMessage.style.display = 'block';
-                    form.style.display = 'none';
-                    
-                    // Scroll verso il messaggio di successo
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    // Resetta il form
-                    form.reset();
-                } else {
-                    throw new Error('Invio fallito');
-                }
-            } catch (error) {
-                // Mostra messaggio di errore
-                errorMessage.style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Invia Prenotazione';
-                
-                // Scroll verso il messaggio di errore
-                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        });
-    }
-});
-
-
-    
-    //Funzione: torna in cima
-document.querySelector('.logo-titolo').addEventListener('click', function(e) {
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-    
-    // Mobile nav toggle
-   // Mobile nav toggle con animazione hamburger
-// Mobile nav toggle con animazione hamburger
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-
-menuToggle.onclick = function() {
-  menuToggle.classList.toggle('active');
-  navLinks.classList.toggle('active');
+<!-- Banner cookie (semplice esempio) -->
+  <div id="cookieBanner" class="cookie-banner" style="display:none;">
+    🔒 Questo sito utilizza cookie tecnici per migliorare la navigazione.
+    <a href="privacy.html">Privacy Policy</a>
+    <button id="acceptCookies">Accetta</button>
+  </div>
   
-  const isExpanded = navLinks.classList.contains('active');
-  menuToggle.setAttribute('aria-expanded', isExpanded);
-  
-  // NUOVO: Blocca scroll quando menu aperto
-  if (isExpanded) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-}
+ <script>
+    // Hamburger menu
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
 
-// Chiudi menu quando si clicca su un link
-const menuItems = navLinks.querySelectorAll('a');
-menuItems.forEach(link => {
-  link.addEventListener('click', () => {
-    menuToggle.classList.remove('active');
-    navLinks.classList.remove('active');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = ''; // NUOVO: Riabilita scroll
-  });
-});
+    menuToggle.onclick = function() {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("active");
+      const expanded = navLinks.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', expanded);
+      // Blocca scroll sfondo mobile
+      if (expanded) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    };
 
-    // Animazione fade-in
+    // Chiudi menu al click su link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Cookie banner
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!localStorage.getItem('cookieAccepted')) {
+        document.getElementById('cookieBanner').style.display = 'flex';
+      }
+      document.getElementById('acceptCookies').onclick = function() {
+        localStorage.setItem('cookieAccepted', 'true');
+        document.getElementById('cookieBanner').style.display = 'none';
+      }
+    });
+
+    // Fade in animazione sulle card menu
     function fadeInOnScroll() {
-      const items = document.querySelectorAll('.menu-item');
+      const items = document.querySelectorAll('.menu-card');
       const triggerBottom = window.innerHeight * 0.92;
       items.forEach(item => {
         const boxTop = item.getBoundingClientRect().top;
@@ -430,17 +357,6 @@ menuItems.forEach(link => {
     }
     window.addEventListener('scroll', fadeInOnScroll);
     window.addEventListener('load', fadeInOnScroll);
-
-    // Banner Cookie
-    document.addEventListener('DOMContentLoaded', function() {
-      if (!localStorage.getItem('cookieAccepted')) {
-        document.getElementById('cookieBanner').style.display = 'flex';
-      }
-      document.getElementById('acceptCookies').onclick = function() {
-        localStorage.setItem('cookieAccepted', 'true');
-        document.getElementById('cookieBanner').style.display = 'none';
-      }
-    });
   </script>
 </body>
 </html>
