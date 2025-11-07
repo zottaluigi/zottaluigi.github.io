@@ -454,28 +454,33 @@ document.querySelector('.logo-titolo').addEventListener('click', function(e) {
     
     // Mobile nav toggle
    // Mobile nav toggle con animazione hamburger
+// Mobile nav toggle con animazione hamburger
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
 menuToggle.onclick = function() {
-  // Toggle classe active su hamburger
   menuToggle.classList.toggle('active');
-  
-  // Toggle menu
   navLinks.classList.toggle('active');
   
-  // Accessibilità: aggiorna aria-expanded
   const isExpanded = navLinks.classList.contains('active');
   menuToggle.setAttribute('aria-expanded', isExpanded);
+  
+  // NUOVO: Blocca scroll quando menu aperto
+  if (isExpanded) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
 }
 
-// Chiudi menu quando si clicca su un link (migliora UX)
+// Chiudi menu quando si clicca su un link
 const menuItems = navLinks.querySelectorAll('a');
 menuItems.forEach(link => {
   link.addEventListener('click', () => {
     menuToggle.classList.remove('active');
     navLinks.classList.remove('active');
     menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = ''; // NUOVO: Riabilita scroll
   });
 });
 
