@@ -210,12 +210,12 @@ body {
 }
 
 /* Fade-in animazione menu voci */
-.menu-card{
+.menu-item{
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s, transform 0.6s;
 }
-.menu-card.fade-in {
+.menu-item.fade-in {
   opacity: 1;
   transform: translateY(0);
 }
