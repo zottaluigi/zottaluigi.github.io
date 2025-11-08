@@ -15,13 +15,15 @@ html, body {
   background: var(--main-bg);
   color: var(--primary);
   padding-bottom: 80px;
+  max-width: 100%; /* AGGIUNGI questa riga */
+  overflow-x: hidden; /* AGGIUNGI questa riga */
 }
 body { padding-top: 80px; }
 
 /* ========== HEADER & NAVBAR ========== */
 header {
   position: fixed;
-  top: 0; left: 0; width: 100vw;
+  top: 0; left: 0; width: 100%;
   z-index: 999; background: var(--accent);
   box-shadow: 0 3px 14px rgba(60, 40, 20, 0.03);
   height: 80px; display: flex; align-items: center;
