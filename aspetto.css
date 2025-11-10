@@ -48,18 +48,18 @@ header {
   background: none; border: none; cursor: pointer;
   display: none; /* default: nascosto, visibile con media query sotto */
   flex-direction: column; justify-content: center; align-items: center;
-  height: 28px; width: 32px; margin-left: 18px;
+  height: 32px; width: 36px; margin-left: 18px;
   padding: 0;
 }
 .hamburger-line {
-  display: block; width: 20px; height: 2px;
+  display: block; width: 22px; height: 2px;
   background: var(--light); border-radius: 0px;
   margin: 3px 0;
   transition: all 0.3s cubic-bezier(.63,.02,.13,1.11);
 }
-.menu-toggle.active .hamburger-line:nth-child(1) {transform: rotate(45deg) translate(2.5px, 2.5px);}
+.menu-toggle.active .hamburger-line:nth-child(1) {transform: rotate(45deg) translate(4px, 4px);}
 .menu-toggle.active .hamburger-line:nth-child(2) {opacity: 0;}
-.menu-toggle.active .hamburger-line:nth-child(3) {transform: rotate(-45deg) translate(2.5px, -2.5px);}
+.menu-toggle.active .hamburger-line:nth-child(3) {transform: rotate(-45deg) translate(4px, -4px);}
 
 /* ----- MENU DESKTOP ----- */
 .nav-links {
