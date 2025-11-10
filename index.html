@@ -9,14 +9,14 @@
   <style>
   .hamburger-line {
     width: 20px !important; 
-    height: 2px !important;
-    margin: 3px 0 !important;
+    height: 2.5px !important;
+    margin: 2.5px 0 !important;
   }
   .menu-toggle.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(3.5px, 3.5px) !important;
+    transform: rotate(45deg) translate(3.2px, 3.2px) !important;
   }
   .menu-toggle.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(3.5px, -3.5px) !important;
+    transform: rotate(-45deg) translate(3.2px, -3.2px) !important;
   }
   </style>
 </head>
@@ -25,11 +25,13 @@
   <header>
     <nav class="navbar">
       <a href="#" class="logo-titolo">Il Capriccio del My Way</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
+<button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+    <line class="line-top" x1="3" y1="6" x2="21" y2="6"/>
+    <line class="line-middle" x1="3" y1="12" x2="21" y2="12"/>
+    <line class="line-bottom" x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#pizze">Pizze</a></li>
         <li><a href="#pizze-speciali">Pizze Speciali</a></li>
