@@ -48,13 +48,13 @@ header {
   background: none; border: none; cursor: pointer;
   display: none; /* default: nascosto, visibile con media query sotto */
   flex-direction: column; justify-content: center; align-items: center;
-  height: 42px; width: 44px; margin-left: 18px;
+  height: 30px; width: 32px; margin-left: 18px;
   padding: 0;
 }
 .hamburger-line {
-  display: block; width: 20px; height: 2px;
-  background: var(--light); border-radius: 2px;
-  margin: 3px 0;
+  display: block; width: 18px; height: 2px;
+  background: var(--light); border-radius: 1px;
+  margin: 2.5px 0;
   transition: all 0.3s cubic-bezier(.63,.02,.13,1.11);
 }
 .menu-toggle.active .hamburger-line:nth-child(1) {transform: rotate(45deg) translate(4px, 4px);}
